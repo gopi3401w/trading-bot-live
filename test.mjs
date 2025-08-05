@@ -12,3 +12,4 @@ evtSource.onmessage = (e) => {
 evtSource.onerror = (err) => {
   console.error('❌ EventSource error:', err);
 };
+// thanks
