@@ -1,0 +1,194 @@
+[
+  {
+    "signal": "buy tp",
+    "time": "2025-08-04T12:04:01Z",
+    "pair": "BTCUSDT",
+    "loggedAt": "2025-08-05T08:43:01.196Z"
+  },
+  {
+    "signal": "buy",
+    "time": "2025-08-04T12:04:00Z",
+    "pair": "BTCUSDT",
+    "loggedAt": "2025-08-05T08:43:00.955Z"
+  },
+  {
+    "signal": "buy sl",
+    "time": "2025-08-04T12:03:01Z",
+    "pair": "BTCUSDT",
+    "loggedAt": "2025-08-05T08:43:00.707Z"
+  },
+  {
+    "signal": "buy",
+    "time": "2025-08-04T12:03:00Z",
+    "pair": "BTCUSDT",
+    "loggedAt": "2025-08-05T08:43:00.482Z"
+  },
+  {
+    "signal": "buy tp",
+    "time": "2025-08-04T12:04:01Z",
+    "pair": "BTCUSDT",
+    "loggedAt": "2025-08-05T08:41:47.002Z"
+  },
+  {
+    "signal": "buy",
+    "time": "2025-08-04T12:04:00Z",
+    "pair": "BTCUSDT",
+    "loggedAt": "2025-08-05T08:41:46.717Z"
+  },
+  {
+    "signal": "buy sl",
+    "time": "2025-08-04T12:03:01Z",
+    "pair": "BTCUSDT",
+    "loggedAt": "2025-08-05T08:41:46.458Z"
+  },
+  {
+    "signal": "buy",
+    "time": "2025-08-04T12:03:00Z",
+    "pair": "BTCUSDT",
+    "loggedAt": "2025-08-05T08:41:46.190Z"
+  },
+  {
+    "signal": "buy tp",
+    "time": "2025-08-04T12:04:01Z",
+    "pair": "BTCUSDT",
+    "loggedAt": "2025-08-05T08:38:38.495Z"
+  },
+  {
+    "signal": "buy",
+    "time": "2025-08-04T12:04:00Z",
+    "pair": "BTCUSDT",
+    "loggedAt": "2025-08-05T08:38:38.220Z"
+  },
+  {
+    "signal": "buy sl",
+    "time": "2025-08-04T12:03:01Z",
+    "pair": "BTCUSDT",
+    "loggedAt": "2025-08-05T08:38:37.939Z"
+  },
+  {
+    "signal": "buy",
+    "time": "2025-08-04T12:03:00Z",
+    "pair": "BTCUSDT",
+    "loggedAt": "2025-08-05T08:38:37.659Z"
+  },
+  {
+    "signal": "buy tp",
+    "time": "2025-08-04T12:04:01Z",
+    "loggedAt": "2025-08-05T08:31:56.020Z"
+  },
+  {
+    "signal": "buy",
+    "time": "2025-08-04T12:04:00Z",
+    "loggedAt": "2025-08-05T08:31:55.715Z"
+  },
+  {
+    "signal": "buy sl",
+    "time": "2025-08-04T12:03:01Z",
+    "loggedAt": "2025-08-05T08:31:55.441Z"
+  },
+  {
+    "signal": "buy",
+    "time": "2025-08-04T12:03:00Z",
+    "loggedAt": "2025-08-05T08:31:55.084Z"
+  },
+  {
+    "signal": "buy tp",
+    "time": "2025-08-04T12:04:01Z",
+    "loggedAt": "2025-08-05T08:31:45.244Z"
+  },
+  {
+    "signal": "buy",
+    "time": "2025-08-04T12:04:00Z",
+    "loggedAt": "2025-08-05T08:31:44.983Z"
+  },
+  {
+    "signal": "buy sl",
+    "time": "2025-08-04T12:03:01Z",
+    "loggedAt": "2025-08-05T08:31:44.696Z"
+  },
+  {
+    "signal": "buy",
+    "time": "2025-08-04T12:03:00Z",
+    "loggedAt": "2025-08-05T08:31:44.445Z"
+  },
+  {
+    "signal": "buy tp",
+    "time": "2025-08-04T12:04:01Z",
+    "loggedAt": "2025-08-05T08:31:34.821Z"
+  },
+  {
+    "signal": "buy",
+    "time": "2025-08-04T12:04:00Z",
+    "loggedAt": "2025-08-05T08:31:34.555Z"
+  },
+  {
+    "signal": "buy sl",
+    "time": "2025-08-04T12:03:01Z",
+    "loggedAt": "2025-08-05T08:31:34.295Z"
+  },
+  {
+    "signal": "buy",
+    "time": "2025-08-04T12:03:00Z",
+    "loggedAt": "2025-08-05T08:31:34.036Z"
+  },
+  {
+    "signal": "buy tp",
+    "time": "2025-08-04T12:04:01Z",
+    "loggedAt": "2025-08-05T08:27:43.662Z"
+  },
+  {
+    "signal": "buy",
+    "time": "2025-08-04T12:04:00Z",
+    "loggedAt": "2025-08-05T08:27:43.272Z"
+  },
+  {
+    "signal": "buy sl",
+    "time": "2025-08-04T12:03:01Z",
+    "loggedAt": "2025-08-05T08:27:42.807Z"
+  },
+  {
+    "signal": "buy",
+    "time": "2025-08-04T12:03:00Z",
+    "loggedAt": "2025-08-05T08:27:41.992Z"
+  },
+  {
+    "signal": "buy tp",
+    "time": "2025-08-04T12:04:01Z",
+    "loggedAt": "2025-08-05T08:24:13.516Z"
+  },
+  {
+    "signal": "buy",
+    "time": "2025-08-04T12:04:00Z",
+    "loggedAt": "2025-08-05T08:24:13.232Z"
+  },
+  {
+    "signal": "buy sl",
+    "time": "2025-08-04T12:03:01Z",
+    "loggedAt": "2025-08-05T08:24:12.992Z"
+  },
+  {
+    "signal": "buy",
+    "time": "2025-08-04T12:03:00Z",
+    "loggedAt": "2025-08-05T08:24:12.711Z"
+  },
+  {
+    "signal": "buy tp",
+    "time": "2025-08-04T12:04:01Z",
+    "loggedAt": "2025-08-05T08:23:51.845Z"
+  },
+  {
+    "signal": "buy",
+    "time": "2025-08-04T12:04:00Z",
+    "loggedAt": "2025-08-05T08:23:51.511Z"
+  },
+  {
+    "signal": "buy sl",
+    "time": "2025-08-04T12:03:01Z",
+    "loggedAt": "2025-08-05T08:23:51.192Z"
+  },
+  {
+    "signal": "buy",
+    "time": "2025-08-04T12:03:00Z",
+    "loggedAt": "2025-08-05T08:23:50.832Z"
+  }
+]

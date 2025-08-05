@@ -11,13 +11,10 @@ const PORT = 3000;
 
 app.use(bodyParser.json());
 
-// MongoDB setup
-mongoose.connect(mongoURI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('✅ Connected to MongoDB Atlas'))
-.catch((err) => console.error('❌ MongoDB connection error:', err));
+// Connect MongoDB
+mongoose.connect(mongoURI)
+  .then(() => console.log('✅ Connected to MongoDB Atlas'))
+  .catch((err) => console.error('❌ MongoDB connection error:', err));
 
 // Collections
 const tradingSchema = new mongoose.Schema({}, { strict: false });
@@ -30,7 +27,7 @@ const signalStateSchema = new mongoose.Schema({
 
 const SignalState = mongoose.model('SignalState', signalStateSchema);
 
-// Ensure initial state
+// Ensure initial SignalState
 mongoose.connection.once('open', async () => {
   const existing = await SignalState.findOne();
   if (!existing) {
@@ -41,22 +38,30 @@ mongoose.connection.once('open', async () => {
 
 const logFilePath = path.join(process.cwd(), 'signal-log.json');
 
+// Safe JSON log writer
 const appendToJSONLog = async (data) => {
   try {
+    if (!fs.existsSync(logFilePath)) fs.writeFileSync(logFilePath, '[]');
+
     let log = [];
-    if (fs.existsSync(logFilePath)) {
+    try {
       const raw = fs.readFileSync(logFilePath, 'utf-8');
-      log = JSON.parse(raw);
+      log = raw ? JSON.parse(raw) : [];
+    } catch (err) {
+      console.warn('⚠ Malformed signal-log.json — resetting.');
+      log = [];
     }
+
     log.unshift({ ...data, loggedAt: new Date().toISOString() });
     if (log.length > 1000) log = log.slice(0, 1000);
+
     fs.writeFileSync(logFilePath, JSON.stringify(log, null, 2));
   } catch (err) {
-    console.error('⚠ Failed to log to JSON file:', err);
+    console.error('⚠ Failed to write signal-log.json:', err);
   }
 };
 
-// 🔴 Store connected clients for SSE
+// 🔴 SSE client store
 const clients = [];
 app.get('/stream-signals', (req, res) => {
   res.setHeader('Content-Type', 'text/event-stream');
@@ -79,7 +84,7 @@ function broadcastSignal(data) {
   clients.forEach(res => res.write(payload));
 }
 
-// Main webhook
+// POST webhook handler
 app.post('/webhook', async (req, res) => {
   try {
     const data = req.body;
@@ -166,6 +171,7 @@ app.post('/webhook', async (req, res) => {
       }
     }
 
+    // Trim old signals
     const total = await Trading.countDocuments();
     if (total > 300) {
       const oldRecords = await Trading.find().sort({ _id: 1 }).limit(total - 300).select('_id');
