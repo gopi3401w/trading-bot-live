@@ -1,5 +1,50 @@
 [
   {
+    "phase": "outcome",
+    "outcome": "tp",
+    "time": "2025-08-13T16:57:55.2953039+05:30",
+    "symbol": "BTCUSDT",
+    "signal": "sell tp",
+    "loggedAt": "2025-08-13T11:27:40.313Z"
+  },
+  {
+    "phase": "entry",
+    "time": "2025-08-13T16:57:54.0793417+05:30",
+    "symbol": "BTCUSDT",
+    "signal": "sell",
+    "loggedAt": "2025-08-13T11:27:40.105Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "sl",
+    "time": "2025-08-13T16:57:50.4431419+05:30",
+    "symbol": "BTCUSDT",
+    "signal": "buy sl",
+    "loggedAt": "2025-08-13T11:27:39.462Z"
+  },
+  {
+    "phase": "entry",
+    "time": "2025-08-13T16:57:47.9105534+05:30",
+    "symbol": "BTCUSDT",
+    "signal": "buy",
+    "loggedAt": "2025-08-13T11:27:38.940Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "tp",
+    "time": "2025-08-13T16:57:43.0468603+05:30",
+    "symbol": "BTCUSDT",
+    "signal": "sell tp",
+    "loggedAt": "2025-08-13T11:27:38.071Z"
+  },
+  {
+    "phase": "entry",
+    "time": "2025-08-13T16:57:40.6238469+05:30",
+    "symbol": "BTCUSDT",
+    "signal": "sell",
+    "loggedAt": "2025-08-13T11:27:37.648Z"
+  },
+  {
     "signal": "buy tp",
     "time": "2025-08-04T12:04:01Z",
     "pair": "BTCUSDT",

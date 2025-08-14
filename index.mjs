@@ -20,19 +20,36 @@ mongoose.connect(mongoURI)
 const tradingSchema = new mongoose.Schema({}, { strict: false });
 const Trading = mongoose.model('Trading', tradingSchema, 'Trading');
 
+// New state machine modes
+// - aside_wait_loss:         idle; ignore entries until any SL occurs
+// - wait_profit_after_loss:  saw a loss; wait for any TP
+// - armed_wait_entry:        saw Loss -> Profit; take the very next entry (buy/sell)
+// - in_trade_wait_outcome:   we are in a trade; wait for matching TP/SL
+const VALID_MODES = new Set([
+  'aside_wait_loss',
+  'wait_profit_after_loss',
+  'armed_wait_entry',
+  'in_trade_wait_outcome',
+]);
+
 const signalStateSchema = new mongoose.Schema({
-  mode: String,
-  lastSignal: Object,
+  mode: String,       // one of VALID_MODES
+  lastSignal: Object, // the entry we accepted when in_trade_wait_outcome
 }, { collection: 'SignalState' });
 
 const SignalState = mongoose.model('SignalState', signalStateSchema);
 
 // Ensure initial SignalState
 mongoose.connection.once('open', async () => {
-  const existing = await SignalState.findOne();
-  if (!existing) {
-    await SignalState.create({ mode: 'waiting_3sl', lastSignal: null });
-    console.log('🧠 Initialized SignalState to waiting_3sl');
+  let state = await SignalState.findOne();
+  if (!state) {
+    await SignalState.create({ mode: 'aside_wait_loss', lastSignal: null });
+    console.log('🧠 Initialized SignalState to aside_wait_loss');
+  } else if (!VALID_MODES.has(state.mode)) {
+    state.mode = 'aside_wait_loss';
+    state.lastSignal = null;
+    await state.save();
+    console.log('🧠 Migrated SignalState to aside_wait_loss');
   }
 });
 
@@ -79,95 +96,135 @@ app.get('/stream-signals', (req, res) => {
   });
 });
 
-function broadcastSignal(data) {
+function broadcast(data) {
   const payload = `data: ${JSON.stringify(data)}\n\n`;
   clients.forEach(res => res.write(payload));
+}
+function broadcastState(mode) {
+  broadcast({ type: 'state', mode, at: new Date().toISOString() });
+}
+
+// Helpers
+function normSignal(s) {
+  return (s ?? '').toString().trim().toLowerCase().replace(/\s+/g, ' ');
+}
+function isEntry(signalType) {
+  return signalType === 'buy' || signalType === 'sell';
+}
+function isOutcome(signalType) {
+  return signalType.endsWith(' tp') || signalType.endsWith(' sl');
+}
+function outcomeKind(signalType) {
+  return signalType.endsWith(' tp') ? 'tp' : (signalType.endsWith(' sl') ? 'sl' : null);
+}
+function matchesOutcomeForEntry(entrySignal, outcomeSignal) {
+  // entrySignal: 'buy' | 'sell'; outcomes begin with same prefix e.g. 'buy tp'
+  return normSignal(outcomeSignal).startsWith(normSignal(entrySignal));
 }
 
 // POST webhook handler
 app.post('/webhook', async (req, res) => {
   try {
-    const data = req.body;
-
-    if (!data || Object.keys(data).length === 0) {
+    const raw = req.body;
+    if (!raw || Object.keys(raw).length === 0) {
       return res.status(400).json({ message: 'Empty payload received' });
     }
 
-    const signalType = data.signal?.toLowerCase();
-    const isEntrySignal = signalType === 'buy' || signalType === 'sell';
-    const isOutcomeSignal = signalType?.includes('tp') || signalType?.includes('sl');
+    // Normalize signal
+    const signalType = normSignal(raw.signal);
+    if (!signalType) {
+      return res.status(400).json({ message: 'Missing signal type' });
+    }
 
-    let state = await SignalState.findOne();
-
-    const entry = new Trading(data);
+    // Persist the raw event
+    const entry = new Trading(raw);
     await entry.save();
 
-    const recentSignals = await Trading.find().sort({ _id: -1 }).limit(60).lean();
+    // Load/validate state
+    let state = await SignalState.findOne();
+    if (!state || !VALID_MODES.has(state.mode)) {
+      state = state || new SignalState();
+      state.mode = 'aside_wait_loss';
+      state.lastSignal = null;
+      await state.save();
+    }
 
-    const completeSignals = [];
-    for (let i = 0; i < recentSignals.length - 1; i++) {
-      const current = recentSignals[i];
-      const next = recentSignals[i + 1];
+    // State machine
+    let logThis = false;
+    let info = 'Processed';
 
-      const nextSignal = next.signal?.toLowerCase();
-      const currentSignal = current.signal?.toLowerCase();
-
-      const isValidPair =
-        (currentSignal === `${nextSignal} tp` || currentSignal === `${nextSignal} sl`) &&
-        (nextSignal === 'buy' || nextSignal === 'sell');
-
-      if (isValidPair) {
-        completeSignals.push({
-          entry: nextSignal,
-          outcome: currentSignal.endsWith('sl') ? 'sl' : 'tp',
-          entryTime: next.time || null,
-        });
-        i++;
+    if (state.mode === 'aside_wait_loss') {
+      if (isOutcome(signalType) && outcomeKind(signalType) === 'sl') {
+        // Saw a loss in the stream → now wait for a profit close
+        state.mode = 'wait_profit_after_loss';
+        await state.save();
+        broadcastState(state.mode);
+        info = 'Loss observed; waiting for profit close to arm.';
+      } else {
+        info = 'Aside: waiting for a loss (SL) before arming.';
       }
     }
 
-    const last3 = completeSignals.slice(0, 3);
-    const failedCount = last3.filter(sig => sig.outcome === 'sl').length;
-
-    let logThis = false;
-
-    if (state.mode === 'waiting_3sl') {
-      if (isEntrySignal) {
-        if (failedCount < 3) {
-          return res.status(200).json({ message: 'Entry rejected: wait for 3 failed trades' });
-        }
-
-        console.log('✅ Entry signal accepted after 3 SLs:', data);
-        await appendToJSONLog(data);
-        broadcastSignal({ type: 'entry', ...data });
-
-        logThis = true;
-        state.mode = 'awaiting_outcome';
-        state.lastSignal = data;
+    else if (state.mode === 'wait_profit_after_loss') {
+      if (isOutcome(signalType) && outcomeKind(signalType) === 'tp') {
+        // Loss → Profit sequence completed → arm for next entry
+        state.mode = 'armed_wait_entry';
         await state.save();
+        broadcastState(state.mode);
+        info = 'Armed: waiting for the very next entry (buy/sell).';
       } else {
-        return res.status(200).json({ message: 'Waiting for valid entry signal' });
+        info = 'Waiting for profit close (TP) to arm.';
       }
-    } else if (state.mode === 'awaiting_outcome') {
-      const expected = state.lastSignal?.signal?.toLowerCase();
-      const isThisTheOutcome = isOutcomeSignal && signalType.startsWith(expected);
+    }
 
-      if (isThisTheOutcome) {
-        const isTP = signalType.endsWith('tp');
-        const resultType = isTP ? 'tp' : 'sl';
-
-        console.log(`📈 ${resultType.toUpperCase()} hit:`, data);
-        await appendToJSONLog(data);
-        broadcastSignal({ type: resultType, ...data });
+    else if (state.mode === 'armed_wait_entry') {
+      if (isEntry(signalType)) {
+        // Take the very next entry
+        console.log('✅ Entry signal accepted:', raw);
+        await appendToJSONLog({ phase: 'entry', ...raw });
+        broadcast({ type: 'entry', ...raw });
 
         logThis = true;
-        state.mode = 'waiting_3sl';
-        state.lastSignal = null;
+        state.mode = 'in_trade_wait_outcome';
+        state.lastSignal = raw; // remember our entry to match its outcome
         await state.save();
-      } else if (isEntrySignal) {
-        return res.status(200).json({ message: 'Still awaiting previous trade outcome' });
+        broadcastState(state.mode);
+        info = 'Entry accepted; waiting for this trade outcome.';
       } else {
-        return res.status(200).json({ message: 'Signal not related to current outcome wait' });
+        info = 'Armed: waiting for next entry.';
+      }
+    }
+
+    else if (state.mode === 'in_trade_wait_outcome') {
+      const expected = normSignal(state.lastSignal?.signal); // 'buy' or 'sell'
+      if (isOutcome(signalType) && matchesOutcomeForEntry(expected, signalType)) {
+        const kind = outcomeKind(signalType); // 'tp' or 'sl'
+        const resultType = kind === 'tp' ? 'tp' : 'sl';
+
+        console.log(`📈 Trade closed (${resultType.toUpperCase()}):`, raw);
+        await appendToJSONLog({ phase: 'outcome', outcome: resultType, ...raw });
+        broadcast({ type: resultType, ...raw });
+
+        if (resultType === 'tp') {
+          // Our trade profited → reset completely; wait for next Loss to start a new cycle
+          state.mode = 'aside_wait_loss';
+          state.lastSignal = null;
+          await state.save();
+          broadcastState(state.mode);
+          info = 'Trade closed in profit → reset; waiting for next loss (SL).';
+        } else {
+          // Our trade lost → wait for next Profit close, then we’ll take the next entry
+          state.mode = 'wait_profit_after_loss';
+          state.lastSignal = null;
+          await state.save();
+          broadcastState(state.mode);
+          info = 'Trade closed in loss → waiting for next profit close (TP) to arm.';
+        }
+        logThis = true;
+      } else if (isEntry(signalType)) {
+        info = 'Still in a trade; ignoring new entry until the current trade closes.';
+      } else {
+        info = 'In-trade: signal not related to current trade outcome.';
       }
     }
 
@@ -181,10 +238,10 @@ app.post('/webhook', async (req, res) => {
     }
 
     if (!logThis) {
-      console.log('ℹ Signal processed (not logged):', data.signal);
+      console.log('ℹ Signal processed (not logged):', signalType);
     }
 
-    return res.status(200).json({ message: 'Webhook processed successfully' });
+    return res.status(200).json({ message: 'Webhook processed', info, mode: state.mode });
   } catch (error) {
     console.error('❌ Error in /webhook:', error);
     res.status(500).json({ message: 'Internal server error' });
