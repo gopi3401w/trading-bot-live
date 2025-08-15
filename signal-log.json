@@ -1,575 +1,313 @@
 [
   {
     "phase": "outcome",
-    "outcome": "tp",
-    "time": "2025-08-13T16:57:55.2953039+05:30",
-    "symbol": "BTCUSDT",
-    "signal": "sell tp",
-    "loggedAt": "2025-08-13T11:27:40.313Z"
+    "outcome": "sl",
+    "sizeMultiplier": 1,
+    "signal": "buy sl",
+    "loggedAt": "2025-08-15T13:50:49.054Z"
   },
   {
     "phase": "entry",
-    "time": "2025-08-13T16:57:54.0793417+05:30",
-    "symbol": "BTCUSDT",
-    "signal": "sell",
-    "loggedAt": "2025-08-13T11:27:40.105Z"
+    "signal": "buy",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-15T13:49:23.099Z"
   },
   {
     "phase": "outcome",
     "outcome": "sl",
-    "time": "2025-08-13T16:57:50.4431419+05:30",
-    "symbol": "BTCUSDT",
+    "sizeMultiplier": 1,
     "signal": "buy sl",
-    "loggedAt": "2025-08-13T11:27:39.462Z"
+    "loggedAt": "2025-08-15T13:49:00.194Z"
   },
   {
     "phase": "entry",
-    "time": "2025-08-13T16:57:47.9105534+05:30",
-    "symbol": "BTCUSDT",
     "signal": "buy",
-    "loggedAt": "2025-08-13T11:27:38.940Z"
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-15T13:48:51.984Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "buy",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-15T13:48:51.982Z"
   },
   {
     "phase": "outcome",
     "outcome": "tp",
-    "time": "2025-08-13T16:57:43.0468603+05:30",
-    "symbol": "BTCUSDT",
-    "signal": "sell tp",
-    "loggedAt": "2025-08-13T11:27:38.071Z"
+    "sizeMultiplier": 1,
+    "signal": "buy tp",
+    "loggedAt": "2025-08-15T13:48:36.336Z"
   },
   {
     "phase": "entry",
-    "time": "2025-08-13T16:57:40.6238469+05:30",
-    "symbol": "BTCUSDT",
+    "signal": "buy",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-15T13:48:33.159Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "sl",
+    "sizeMultiplier": 1,
+    "signal": "sell sl",
+    "loggedAt": "2025-08-15T13:43:48.015Z"
+  },
+  {
+    "phase": "entry",
     "signal": "sell",
-    "loggedAt": "2025-08-13T11:27:37.648Z"
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-15T13:43:46.018Z"
   },
   {
-    "signal": "buy tp",
-    "time": "2025-08-04T12:04:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:18:05.779Z"
+    "phase": "outcome",
+    "outcome": "tp",
+    "sizeMultiplier": 1,
+    "signal": "sell tp",
+    "loggedAt": "2025-08-15T13:43:24.009Z"
   },
   {
-    "signal": "buy",
-    "time": "2025-08-04T12:04:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:18:05.565Z"
+    "phase": "entry",
+    "signal": "sell",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-15T13:43:22.377Z"
   },
   {
+    "phase": "outcome",
+    "outcome": "sl",
+    "sizeMultiplier": 1,
+    "signal": "sell sl",
+    "loggedAt": "2025-08-15T13:43:18.985Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "sell",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-15T13:43:17.016Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "tp",
+    "sizeMultiplier": 1,
+    "signal": "sell tp",
+    "loggedAt": "2025-08-15T13:41:28.015Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "sell",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-15T13:41:25.884Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "sl",
+    "sizeMultiplier": 1,
+    "signal": "sell sl",
+    "loggedAt": "2025-08-15T13:41:22.312Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "sell",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-15T13:41:17.051Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "tp",
+    "sizeMultiplier": 1,
+    "signal": "sell tp",
+    "loggedAt": "2025-08-15T13:41:12.985Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "sell",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-15T13:41:10.971Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "tp",
+    "sizeMultiplier": 2,
+    "signal": "sell tp",
+    "loggedAt": "2025-08-15T13:40:59.018Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "sell",
+    "sizeMultiplier": 2,
+    "loggedAt": "2025-08-15T13:40:55.678Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "sl",
+    "sizeMultiplier": 1,
     "signal": "buy sl",
-    "time": "2025-08-04T12:03:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:18:05.346Z"
+    "loggedAt": "2025-08-15T13:16:58.004Z"
   },
   {
+    "phase": "entry",
     "signal": "buy",
-    "time": "2025-08-04T12:03:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:18:05.108Z"
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-15T13:16:55.105Z"
   },
   {
-    "signal": "buy tp",
-    "time": "2025-08-04T12:04:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:16:22.659Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:04:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:16:22.271Z"
-  },
-  {
+    "phase": "outcome",
+    "outcome": "sl",
+    "sizeMultiplier": 1,
     "signal": "buy sl",
-    "time": "2025-08-04T12:03:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:16:21.744Z"
+    "loggedAt": "2025-08-15T13:16:42.985Z"
   },
   {
+    "phase": "entry",
     "signal": "buy",
-    "time": "2025-08-04T12:03:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:16:21.386Z"
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-15T13:16:40.067Z"
   },
   {
+    "phase": "outcome",
+    "outcome": "tp",
+    "sizeMultiplier": 1,
     "signal": "buy tp",
-    "time": "2025-08-04T12:04:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:15:51.610Z"
+    "loggedAt": "2025-08-15T13:16:28.985Z"
   },
   {
+    "phase": "entry",
     "signal": "buy",
-    "time": "2025-08-04T12:04:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:15:50.630Z"
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-15T13:16:26.130Z"
   },
   {
-    "signal": "buy sl",
-    "time": "2025-08-04T12:03:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:15:50.296Z"
+    "phase": "outcome",
+    "outcome": "tp",
+    "sizeMultiplier": 1,
+    "signal": "sell tp",
+    "loggedAt": "2025-08-15T13:10:01.778Z"
   },
   {
-    "signal": "buy",
-    "time": "2025-08-04T12:03:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:15:49.981Z"
+    "phase": "entry",
+    "signal": "sell",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-15T13:09:47.049Z"
   },
   {
+    "phase": "outcome",
+    "outcome": "sl",
+    "sizeMultiplier": 2,
+    "signal": "sell sl",
+    "loggedAt": "2025-08-15T13:09:17.547Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "sell",
+    "sizeMultiplier": 2,
+    "loggedAt": "2025-08-15T13:09:16.040Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "sl",
+    "sizeMultiplier": 1,
+    "signal": "sell sl",
+    "loggedAt": "2025-08-15T13:08:55.085Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "sell",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-15T13:08:53.018Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "sl",
+    "sizeMultiplier": 1,
+    "signal": "sell sl",
+    "loggedAt": "2025-08-15T13:08:47.065Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "tp",
+    "sizeMultiplier": 1,
+    "signal": "sell tp",
+    "loggedAt": "2025-08-15T13:08:47.062Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "sell",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-15T13:08:46.144Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "tp",
+    "sizeMultiplier": 1,
+    "signal": "sell tp",
+    "loggedAt": "2025-08-15T13:08:33.020Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "sell",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-15T13:08:32.980Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "sl",
+    "sizeMultiplier": 1,
+    "signal": "sell sl",
+    "loggedAt": "2025-08-15T13:08:26.106Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "sell",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-15T13:08:26.048Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "tp",
+    "sizeMultiplier": 1,
     "signal": "buy tp",
-    "time": "2025-08-04T12:04:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:13:33.601Z"
+    "loggedAt": "2025-08-15T11:37:23.122Z"
   },
   {
+    "phase": "entry",
     "signal": "buy",
-    "time": "2025-08-04T12:04:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:13:33.382Z"
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-15T11:37:19.211Z"
   },
   {
+    "phase": "outcome",
+    "outcome": "tp",
+    "sizeMultiplier": 2,
+    "signal": "sell tp",
+    "chart": "ETHUSDT",
+    "loggedAt": "2025-08-15T11:30:18.970Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "sell",
+    "chart": "ETHUSDT",
+    "sizeMultiplier": 2,
+    "loggedAt": "2025-08-15T11:23:39.991Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "sl",
+    "sizeMultiplier": 1,
     "signal": "buy sl",
-    "time": "2025-08-04T12:03:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:13:33.100Z"
+    "chart": "ETHUSDT",
+    "loggedAt": "2025-08-15T10:30:18.068Z"
   },
   {
+    "phase": "entry",
     "signal": "buy",
-    "time": "2025-08-04T12:03:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:13:32.896Z"
+    "chart": "ETHUSDT",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-15T10:28:18.028Z"
   },
   {
-    "signal": "buy tp",
-    "time": "2025-08-04T12:04:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:10:08.203Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:04:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:10:07.700Z"
-  },
-  {
+    "phase": "outcome",
+    "outcome": "sl",
+    "sizeMultiplier": 1,
     "signal": "buy sl",
-    "time": "2025-08-04T12:03:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:10:07.466Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:03:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:10:07.239Z"
-  },
-  {
-    "signal": "buy tp",
-    "time": "2025-08-04T12:04:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:08:08.752Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:04:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:08:08.431Z"
-  },
-  {
-    "signal": "buy sl",
-    "time": "2025-08-04T12:03:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:08:08.110Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:03:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:08:07.734Z"
-  },
-  {
-    "signal": "buy tp",
-    "time": "2025-08-04T12:04:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:05:25.405Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:04:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:05:25.089Z"
-  },
-  {
-    "signal": "buy sl",
-    "time": "2025-08-04T12:03:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:05:24.790Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:03:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:05:24.528Z"
-  },
-  {
-    "signal": "buy tp",
-    "time": "2025-08-04T12:04:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:03:26.227Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:04:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:03:25.964Z"
-  },
-  {
-    "signal": "buy sl",
-    "time": "2025-08-04T12:03:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:03:25.645Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:03:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:03:25.162Z"
-  },
-  {
-    "signal": "buy tp",
-    "time": "2025-08-04T12:04:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:01:04.280Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:04:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:01:03.985Z"
-  },
-  {
-    "signal": "buy sl",
-    "time": "2025-08-04T12:03:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:01:03.720Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:03:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T09:01:03.326Z"
-  },
-  {
-    "signal": "buy tp",
-    "time": "2025-08-04T12:04:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:59:52.477Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:04:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:59:52.181Z"
-  },
-  {
-    "signal": "buy sl",
-    "time": "2025-08-04T12:03:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:59:51.878Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:03:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:59:51.590Z"
-  },
-  {
-    "signal": "buy tp",
-    "time": "2025-08-04T12:04:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:59:22.911Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:04:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:59:22.610Z"
-  },
-  {
-    "signal": "buy sl",
-    "time": "2025-08-04T12:03:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:59:22.305Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:03:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:59:21.991Z"
-  },
-  {
-    "signal": "buy tp",
-    "time": "2025-08-04T12:04:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:58:37.400Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:04:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:58:37.070Z"
-  },
-  {
-    "signal": "buy sl",
-    "time": "2025-08-04T12:03:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:58:36.753Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:03:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:58:36.429Z"
-  },
-  {
-    "signal": "buy tp",
-    "time": "2025-08-04T12:04:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:58:28.605Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:04:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:58:28.146Z"
-  },
-  {
-    "signal": "buy sl",
-    "time": "2025-08-04T12:03:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:58:27.879Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:03:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:58:27.464Z"
-  },
-  {
-    "signal": "buy tp",
-    "time": "2025-08-04T12:04:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:57:13.761Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:04:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:57:13.454Z"
-  },
-  {
-    "signal": "buy sl",
-    "time": "2025-08-04T12:03:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:57:13.148Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:03:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:57:12.807Z"
-  },
-  {
-    "signal": "buy tp",
-    "time": "2025-08-04T12:04:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:43:01.196Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:04:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:43:00.955Z"
-  },
-  {
-    "signal": "buy sl",
-    "time": "2025-08-04T12:03:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:43:00.707Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:03:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:43:00.482Z"
-  },
-  {
-    "signal": "buy tp",
-    "time": "2025-08-04T12:04:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:41:47.002Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:04:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:41:46.717Z"
-  },
-  {
-    "signal": "buy sl",
-    "time": "2025-08-04T12:03:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:41:46.458Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:03:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:41:46.190Z"
-  },
-  {
-    "signal": "buy tp",
-    "time": "2025-08-04T12:04:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:38:38.495Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:04:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:38:38.220Z"
-  },
-  {
-    "signal": "buy sl",
-    "time": "2025-08-04T12:03:01Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:38:37.939Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:03:00Z",
-    "pair": "BTCUSDT",
-    "loggedAt": "2025-08-05T08:38:37.659Z"
-  },
-  {
-    "signal": "buy tp",
-    "time": "2025-08-04T12:04:01Z",
-    "loggedAt": "2025-08-05T08:31:56.020Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:04:00Z",
-    "loggedAt": "2025-08-05T08:31:55.715Z"
-  },
-  {
-    "signal": "buy sl",
-    "time": "2025-08-04T12:03:01Z",
-    "loggedAt": "2025-08-05T08:31:55.441Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:03:00Z",
-    "loggedAt": "2025-08-05T08:31:55.084Z"
-  },
-  {
-    "signal": "buy tp",
-    "time": "2025-08-04T12:04:01Z",
-    "loggedAt": "2025-08-05T08:31:45.244Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:04:00Z",
-    "loggedAt": "2025-08-05T08:31:44.983Z"
-  },
-  {
-    "signal": "buy sl",
-    "time": "2025-08-04T12:03:01Z",
-    "loggedAt": "2025-08-05T08:31:44.696Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:03:00Z",
-    "loggedAt": "2025-08-05T08:31:44.445Z"
-  },
-  {
-    "signal": "buy tp",
-    "time": "2025-08-04T12:04:01Z",
-    "loggedAt": "2025-08-05T08:31:34.821Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:04:00Z",
-    "loggedAt": "2025-08-05T08:31:34.555Z"
-  },
-  {
-    "signal": "buy sl",
-    "time": "2025-08-04T12:03:01Z",
-    "loggedAt": "2025-08-05T08:31:34.295Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:03:00Z",
-    "loggedAt": "2025-08-05T08:31:34.036Z"
-  },
-  {
-    "signal": "buy tp",
-    "time": "2025-08-04T12:04:01Z",
-    "loggedAt": "2025-08-05T08:27:43.662Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:04:00Z",
-    "loggedAt": "2025-08-05T08:27:43.272Z"
-  },
-  {
-    "signal": "buy sl",
-    "time": "2025-08-04T12:03:01Z",
-    "loggedAt": "2025-08-05T08:27:42.807Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:03:00Z",
-    "loggedAt": "2025-08-05T08:27:41.992Z"
-  },
-  {
-    "signal": "buy tp",
-    "time": "2025-08-04T12:04:01Z",
-    "loggedAt": "2025-08-05T08:24:13.516Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:04:00Z",
-    "loggedAt": "2025-08-05T08:24:13.232Z"
-  },
-  {
-    "signal": "buy sl",
-    "time": "2025-08-04T12:03:01Z",
-    "loggedAt": "2025-08-05T08:24:12.992Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:03:00Z",
-    "loggedAt": "2025-08-05T08:24:12.711Z"
-  },
-  {
-    "signal": "buy tp",
-    "time": "2025-08-04T12:04:01Z",
-    "loggedAt": "2025-08-05T08:23:51.845Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:04:00Z",
-    "loggedAt": "2025-08-05T08:23:51.511Z"
-  },
-  {
-    "signal": "buy sl",
-    "time": "2025-08-04T12:03:01Z",
-    "loggedAt": "2025-08-05T08:23:51.192Z"
-  },
-  {
-    "signal": "buy",
-    "time": "2025-08-04T12:03:00Z",
-    "loggedAt": "2025-08-05T08:23:50.832Z"
+    "chart": "ETHUSDT",
+    "loggedAt": "2025-08-15T10:14:45.083Z"
   }
 ]
