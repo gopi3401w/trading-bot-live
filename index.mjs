@@ -3,11 +3,14 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import fs from 'fs';
 import path from 'path';
+import axios from 'axios';
 
 const mongoURI = 'mongodb+srv://dgames7620:Gopalmirge%40777@cluster0.atfoccf.mongodb.net/gopal?retryWrites=true&w=majority&appName=Cluster0';
 
 const app = express();
 const PORT = 3000;
+
+// 🔴 Change this to your real forward endpoint
 
 app.use(bodyParser.json());
 
@@ -21,11 +24,6 @@ const tradingSchema = new mongoose.Schema({}, { strict: false });
 const Trading = mongoose.model('Trading', tradingSchema, 'Trading');
 
 // Modes
-// - aside_wait_loss:         idle; ignore entries until any SL occurs
-// - wait_profit_after_loss:  saw a loss; wait for ONE TP
-// - armed_wait_entry:        take the very next entry (buy/sell)
-// - in_trade_wait_outcome:   we are in a trade; wait for matching TP/SL
-// - halt_until_two_profits:  after 3rd consecutive loss (our trades), halt until two TPs occur
 const VALID_MODES = new Set([
   'aside_wait_loss',
   'wait_profit_after_loss',
@@ -36,10 +34,10 @@ const VALID_MODES = new Set([
 
 const signalStateSchema = new mongoose.Schema({
   mode: { type: String, default: 'aside_wait_loss' },
-  lastSignal: Object,                 // the entry we accepted when in_trade_wait_outcome
-  consecLosses: { type: Number, default: 0 },   // only our taken trades
-  sizeMultiplier: { type: Number, default: 1 }, // 1 or 2 for the NEXT entry
-  ppCount: { type: Number, default: 0 },        // profit counter used only in halt mode
+  lastSignal: Object,
+  consecLosses: { type: Number, default: 0 },
+  sizeMultiplier: { type: Number, default: 1 },
+  ppCount: { type: Number, default: 0 },
 }, { collection: 'SignalState' });
 
 const SignalState = mongoose.model('SignalState', signalStateSchema);
@@ -91,6 +89,8 @@ const appendToJSONLog = async (data) => {
   }
 };
 
+
+
 // 🔴 SSE client store
 const clients = [];
 app.get('/stream-signals', (req, res) => {
@@ -131,11 +131,16 @@ function outcomeKind(signalType) {
   return signalType.endsWith(' tp') ? 'tp' : (signalType.endsWith(' sl') ? 'sl' : null);
 }
 function matchesOutcomeForEntry(entrySignal, outcomeSignal) {
-  // entrySignal: 'buy' | 'sell'; outcomes begin with same prefix e.g. 'buy tp'
   return normSignal(outcomeSignal).startsWith(normSignal(entrySignal));
 }
 const isProfit = (sig) => isOutcome(sig) && outcomeKind(sig) === 'tp';
 const isLoss   = (sig) => isOutcome(sig) && outcomeKind(sig) === 'sl';
+
+// Disabled forwarder (no-op)
+async function forwardSignal(data) {
+  // intentionally do nothing
+  console.log("⏩ forwardSignal ignored:", data.signal || data);
+}
 
 // POST webhook handler
 app.post('/webhook', async (req, res) => {
@@ -171,14 +176,8 @@ app.post('/webhook', async (req, res) => {
     let logThis = false;
     let info = 'Processed';
 
-    // ─────────────────────────────────────────────────────────────────────────────
-    // BASIC CYCLE: L → (wait P) → ARM → take next entry → wait outcome
-    // SIZING: after 1st loss → 1x; after 2nd loss → 2x; after 3rd loss → HALT until P P
-    // ─────────────────────────────────────────────────────────────────────────────
-
     if (state.mode === 'aside_wait_loss') {
       if (isLoss(signalType)) {
-        // Saw a loss in the stream → now wait for ONE profit to arm
         state.mode = 'wait_profit_after_loss';
         await state.save();
         broadcastState(state.mode);
@@ -190,8 +189,6 @@ app.post('/webhook', async (req, res) => {
 
     else if (state.mode === 'wait_profit_after_loss') {
       if (isProfit(signalType)) {
-        // Loss → Profit sequence completed → arm for next entry
-        // sizing for NEXT entry depends on our consecutive losses
         state.sizeMultiplier = (state.consecLosses >= 2) ? 2 : 1;
         state.mode = 'armed_wait_entry';
         await state.save();
@@ -204,15 +201,17 @@ app.post('/webhook', async (req, res) => {
 
     else if (state.mode === 'armed_wait_entry') {
       if (isEntry(signalType)) {
-        // Take the very next entry
         const entryTaken = { ...raw, sizeMultiplier: state.sizeMultiplier };
         console.log('✅ Entry signal accepted:', entryTaken);
         await appendToJSONLog({ phase: 'entry', ...entryTaken });
         broadcast({ type: 'entry', ...entryTaken });
 
+        // 🔴 Forward entry
+        await forwardSignal(entryTaken);
+
         logThis = true;
         state.mode = 'in_trade_wait_outcome';
-        state.lastSignal = entryTaken; // remember our entry to match its outcome
+        state.lastSignal = entryTaken;
         await state.save();
         broadcastState(state.mode);
         info = `Entry accepted; waiting for this trade outcome (x${state.sizeMultiplier}).`;
@@ -222,17 +221,19 @@ app.post('/webhook', async (req, res) => {
     }
 
     else if (state.mode === 'in_trade_wait_outcome') {
-      const expected = normSignal(state.lastSignal?.signal); // 'buy' or 'sell'
+      const expected = normSignal(state.lastSignal?.signal);
       if (isOutcome(signalType) && matchesOutcomeForEntry(expected, signalType)) {
-        const kind = outcomeKind(signalType); // 'tp' or 'sl'
+        const kind = outcomeKind(signalType);
         const resultType = kind === 'tp' ? 'tp' : 'sl';
 
         console.log(`📈 Trade closed (${resultType.toUpperCase()}):`, raw);
         await appendToJSONLog({ phase: 'outcome', outcome: resultType, sizeMultiplier: state.sizeMultiplier, ...raw });
         broadcast({ type: resultType, sizeMultiplier: state.sizeMultiplier, ...raw });
 
+        // 🔴 Forward outcome
+        await forwardSignal({ ...raw, outcome: resultType, sizeMultiplier: state.sizeMultiplier });
+
         if (resultType === 'tp') {
-          // Our trade profited → full reset
           state.mode = 'aside_wait_loss';
           state.lastSignal = null;
           state.consecLosses = 0;
@@ -242,22 +243,17 @@ app.post('/webhook', async (req, res) => {
           broadcastState(state.mode);
           info = 'Trade closed in profit → reset to basic; waiting for next loss (SL).';
         } else {
-          // Our trade lost → update loss streak and branch
           state.consecLosses = (state.consecLosses || 0) + 1;
           state.lastSignal = null;
 
           if (state.consecLosses >= 3) {
-            // 3rd consecutive loss → HALT until two profits
             state.mode = 'halt_until_two_profits';
-            state.sizeMultiplier = 1; // clear multiplier while halted
+            state.sizeMultiplier = 1;
             state.ppCount = 0;
             await state.save();
             broadcastState(state.mode);
             info = '3rd consecutive loss → HALT. Wait for two Profits (P P) before resuming.';
           } else {
-            // After a loss, we require ONE profit to arm again
-            // Decide multiplier for the NEXT armed entry:
-            // 1st loss → 1x; 2nd loss → 2x
             state.sizeMultiplier = (state.consecLosses >= 2) ? 2 : 1;
             state.mode = 'wait_profit_after_loss';
             await state.save();
@@ -280,7 +276,6 @@ app.post('/webhook', async (req, res) => {
       if (isProfit(signalType)) {
         state.ppCount = (state.ppCount || 0) + 1;
         if (state.ppCount >= 2) {
-          // Two profits observed in the stream → start from basic
           state.mode = 'aside_wait_loss';
           state.consecLosses = 0;
           state.sizeMultiplier = 1;
@@ -293,7 +288,6 @@ app.post('/webhook', async (req, res) => {
           info = `HALT: observed ${state.ppCount} Profit(s); need ${2 - state.ppCount} more.`;
         }
       } else if (isLoss(signalType)) {
-        // Losses during halt do not affect ppCount; keep waiting for two profits
         info = 'HALT: Loss observed; still waiting for two Profits.';
       } else {
         info = 'HALT: waiting for two Profits (P P).';

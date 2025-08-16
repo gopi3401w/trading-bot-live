@@ -1,6 +1,257 @@
 [
   {
     "phase": "outcome",
+    "outcome": "tp",
+    "sizeMultiplier": 1,
+    "type": "tp",
+    "signal": "buy tp",
+    "pair": "ETHUSDT",
+    "loggedAt": "2025-08-16T11:36:20.334Z"
+  },
+  {
+    "phase": "entry",
+    "type": "entry",
+    "signal": "buy",
+    "sizeMultiplier": 1,
+    "pair": "ETHUSDT",
+    "loggedAt": "2025-08-16T11:36:10.960Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "tp",
+    "sizeMultiplier": 1,
+    "signal": "buy tp",
+    "pair": "ETHUSDT",
+    "loggedAt": "2025-08-16T11:28:35.162Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "buy",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-16T10:01:36.762Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "tp",
+    "sizeMultiplier": 1,
+    "signal": "buy tp",
+    "loggedAt": "2025-08-16T09:59:04.086Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "buy",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-16T09:54:29.165Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "sl",
+    "sizeMultiplier": 1,
+    "signal": "sell sl",
+    "loggedAt": "2025-08-16T09:52:36.777Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "sell",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-16T09:52:35.752Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "tp",
+    "sizeMultiplier": 1,
+    "signal": "sell tp",
+    "loggedAt": "2025-08-16T09:52:30.041Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "sell",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-16T09:52:22.770Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "tp",
+    "sizeMultiplier": 1,
+    "signal": "sell tp",
+    "loggedAt": "2025-08-16T09:51:52.691Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "sell",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-16T09:51:47.712Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "tp",
+    "sizeMultiplier": 1,
+    "signal": "sell tp",
+    "loggedAt": "2025-08-16T09:51:43.644Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "sell",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-16T09:51:43.111Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "tp",
+    "sizeMultiplier": 1,
+    "signal": "sell tp",
+    "loggedAt": "2025-08-16T09:51:35.663Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "sell",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-16T09:51:34.767Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "sl",
+    "sizeMultiplier": 2,
+    "signal": "sell sl",
+    "loggedAt": "2025-08-16T09:51:23.784Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "sell",
+    "sizeMultiplier": 2,
+    "loggedAt": "2025-08-16T09:51:21.737Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "sl",
+    "sizeMultiplier": 1,
+    "signal": "sell sl",
+    "loggedAt": "2025-08-16T09:48:52.758Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "sell",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-16T09:48:50.119Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "sl",
+    "sizeMultiplier": 1,
+    "signal": "sell sl",
+    "loggedAt": "2025-08-16T09:48:34.696Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "sell",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-16T09:48:31.690Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "tp",
+    "sizeMultiplier": 2,
+    "signal": "buy tp",
+    "loggedAt": "2025-08-16T08:15:42.306Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "buy",
+    "sizeMultiplier": 2,
+    "loggedAt": "2025-08-16T08:15:36.805Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "sl",
+    "sizeMultiplier": 1,
+    "signal": "buy sl",
+    "loggedAt": "2025-08-16T08:15:13.857Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "buy",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-16T08:15:07.733Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "sl",
+    "sizeMultiplier": 1,
+    "signal": "buy sl",
+    "loggedAt": "2025-08-16T08:14:55.272Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "buy",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-16T08:14:48.904Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "tp",
+    "sizeMultiplier": 1,
+    "signal": "buy tp",
+    "loggedAt": "2025-08-16T08:13:38.771Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "buy",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-16T08:13:31.495Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "buy",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-16T08:07:48.915Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "buy",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-16T08:06:54.893Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "tp",
+    "sizeMultiplier": 1,
+    "signal": "buy tp",
+    "loggedAt": "2025-08-16T08:03:26.802Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "buy",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-16T08:03:19.802Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "sl",
+    "sizeMultiplier": 1,
+    "signal": "buy sl",
+    "loggedAt": "2025-08-16T08:02:41.997Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "buy",
+    "sizeMultiplier": 1,
+    "loggedAt": "2025-08-16T08:02:07.722Z"
+  },
+  {
+    "phase": "outcome",
+    "outcome": "tp",
+    "sizeMultiplier": 2,
+    "signal": "buy tp",
+    "loggedAt": "2025-08-16T07:59:11.171Z"
+  },
+  {
+    "phase": "entry",
+    "signal": "buy",
+    "sizeMultiplier": 2,
+    "loggedAt": "2025-08-16T07:58:57.984Z"
+  },
+  {
+    "phase": "outcome",
     "outcome": "sl",
     "sizeMultiplier": 1,
     "signal": "buy sl",
