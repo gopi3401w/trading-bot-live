@@ -169,7 +169,7 @@ async function handleSignal(symbol, action, multiplier = 1) {
 
 // --------------------- SSE Listener ---------------------
 
-const stream = new EventSource('http://localhost:3000/stream-signals');
+const stream = new EventSource('http://localhost:4015/stream-signals');
 
 stream.onmessage = async (event) => {
   try {

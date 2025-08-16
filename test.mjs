@@ -2,7 +2,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const EventSource = require('eventsource');
 
-const evtSource = new EventSource('http://localhost:3000/stream-signals');
+const evtSource = new EventSource('http://localhost:4015/stream-signals');
 
 evtSource.onmessage = (e) => {
   const signal = JSON.parse(e.data);
